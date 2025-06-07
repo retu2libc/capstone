@@ -22,6 +22,7 @@ Capstone source is organized as followings.
 │   ├── Sparc       <- Sparc engine
 │   ├── SystemZ     <- SystemZ engine
 │   ├── TMS320C64x  <- TMS320C64x engine
+│   ├── TMS320C67x  <- TMS320C67x engine
 │   ├── TriCore     <- TriCore engine
 │   └── WASM        <- WASM engine
 ├── bindings        <- all bindings are under this dir

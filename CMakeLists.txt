@@ -105,8 +105,8 @@ if(APPLE AND NOT CAPSTONE_BUILD_MACOS_THIN)
     set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64")
 endif()
 
-set(SUPPORTED_ARCHITECTURES ARM AARCH64 M68K MIPS PPC SPARC SYSTEMZ XCORE X86 TMS320C64X M680X EVM MOS65XX WASM BPF RISCV SH TRICORE ALPHA HPPA LOONGARCH XTENSA ARC)
-set(SUPPORTED_ARCHITECTURE_LABELS ARM AARCH64 M68K MIPS PowerPC Sparc SystemZ XCore x86 TMS320C64x M680x EVM MOS65XX WASM BPF RISCV SH TriCore Alpha HPPA LoongArch Xtensa ARC)
+set(SUPPORTED_ARCHITECTURES ARM AARCH64 M68K MIPS PPC SPARC SYSTEMZ XCORE X86 TMS320C64X TMS320C67X M680X EVM MOS65XX WASM BPF RISCV SH TRICORE ALPHA HPPA LOONGARCH XTENSA ARC)
+set(SUPPORTED_ARCHITECTURE_LABELS ARM AARCH64 M68K MIPS PowerPC Sparc SystemZ XCore x86 TMS320C64x TMS320C67X M680x EVM MOS65XX WASM BPF RISCV SH TriCore Alpha HPPA LoongArch Xtensa ARC)
 
 # If building for OSX it's best to allow CMake to handle building both architectures
 if(APPLE AND NOT CAPSTONE_BUILD_MACOS_THIN)
@@ -220,6 +220,7 @@ set(HEADERS_COMMON
     include/capstone/xcore.h
     include/capstone/m68k.h
     include/capstone/tms320c64x.h
+    include/capstone/tms320c67x.h
     include/capstone/m680x.h
     include/capstone/mos65xx.h
     include/capstone/bpf.h
@@ -511,6 +512,25 @@ if(CAPSTONE_TMS320C64X_SUPPORT)
     )
 endif()
 
+if(CAPSTONE_TMS320C67X_SUPPORT)
+    add_definitions(-DCAPSTONE_HAS_TMS320C67X)
+    set(SOURCES_TMS320C67X
+        arch/TMS320C67x/TMS320C67xDisassembler.c
+        arch/TMS320C67x/TMS320C67xInstPrinter.c
+        arch/TMS320C67x/TMS320C67xMapping.c
+        arch/TMS320C67x/TMS320C67xModule.c
+    )
+    set(HEADERS_TMS320C67X
+        arch/TMS320C67x/TMS320C67xDisassembler.h
+        arch/TMS320C67x/TMS320C67xGenAsmWriter.inc
+        arch/TMS320C67x/TMS320C67xGenDisassemblerTables.inc
+        arch/TMS320C67x/TMS320C67xGenInstrInfo.inc
+        arch/TMS320C67x/TMS320C67xGenRegisterInfo.inc
+        arch/TMS320C67x/TMS320C67xInstPrinter.h
+        arch/TMS320C67x/TMS320C67xMapping.h
+    )
+endif()
+
 if(CAPSTONE_M680X_SUPPORT)
     add_definitions(-DCAPSTONE_HAS_M680X)
     set(SOURCES_M680X
@@ -748,6 +768,7 @@ set(ALL_SOURCES
     ${SOURCES_XCORE}
     ${SOURCES_M68K}
     ${SOURCES_TMS320C64X}
+    ${SOURCES_TMS320C67X}
     ${SOURCES_M680X}
     ${SOURCES_EVM}
     ${SOURCES_WASM}
@@ -776,6 +797,7 @@ set(ALL_HEADERS
     ${HEADERS_XCORE}
     ${HEADERS_M68K}
     ${HEADERS_TMS320C64X}
+    ${HEADERS_TMS320C67X}
     ${HEADERS_M680X}
     ${HEADERS_EVM}
     ${HEADERS_WASM}
@@ -851,6 +873,7 @@ source_group("Source\\X86" FILES ${SOURCES_X86})
 source_group("Source\\XCore" FILES ${SOURCES_XCORE})
 source_group("Source\\M68K" FILES ${SOURCES_M68K})
 source_group("Source\\TMS320C64x" FILES ${SOURCES_TMS320C64X})
+source_group("Source\\TMS320C67x" FILES ${SOURCES_TMS320C67X})
 source_group("Source\\M680X" FILES ${SOURCES_M680X})
 source_group("Source\\EVM" FILES ${SOURCES_EVM})
 source_group("Source\\WASM" FILES ${SOURCES_WASM})
@@ -877,6 +900,7 @@ source_group("Include\\X86" FILES ${HEADERS_X86})
 source_group("Include\\XCore" FILES ${HEADERS_XCORE})
 source_group("Include\\M68K" FILES ${HEADERS_M68K})
 source_group("Include\\TMS320C64x" FILES ${HEADERS_TMS320C64X})
+source_group("Include\\TMS320C67x" FILES ${HEADERS_TMS320C67X})
 source_group("Include\\M680X" FILES ${HEADERS_MC680X})
 source_group("Include\\EVM" FILES ${HEADERS_EVM})
 source_group("Include\\WASM" FILES ${HEADERS_WASM})

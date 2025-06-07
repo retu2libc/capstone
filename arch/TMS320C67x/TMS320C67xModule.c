@@ -1,0 +1,49 @@
+/* Capstone Disassembly Engine */
+/* TMS320C67x Backend by retu2libc <cwrogg@umich.edu> 2025 */
+
+#ifdef CAPSTONE_HAS_TMS320C67X
+
+#include "../../utils.h"
+#include "../../MCRegisterInfo.h"
+#include "TMS320C67xDisassembler.h"
+#include "TMS320C67xInstPrinter.h"
+#include "TMS320C67xMapping.h"
+#include "TMS320C67xModule.h"
+
+cs_err TMS320C67x_global_init(cs_struct *ud)
+{
+	MCRegisterInfo *mri;
+
+	mri = cs_mem_malloc(sizeof(*mri));
+
+	TMS320C67x_init(mri);
+	ud->printer = TMS320C67x_printInst;
+	ud->printer_info = mri;
+	ud->getinsn_info = mri;
+	ud->disasm = TMS320C67x_getInstruction;
+	ud->post_printer = TMS320C67x_post_printer;
+
+	ud->reg_name = TMS320C67x_reg_name;
+	ud->insn_id = TMS320C67x_get_insn_id;
+	ud->insn_name = TMS320C67x_insn_name;
+	ud->group_name = TMS320C67x_group_name;
+
+	return CS_ERR_OK;
+}
+
+cs_err TMS320C67x_option(cs_struct *handle, cs_opt_type type, size_t value)
+{
+	switch (type) {
+	case CS_OPT_MODE:
+		handle->mode |= (cs_mode)value;
+		break;
+	case CS_OPT_SYNTAX:
+		handle->syntax |= (int)value;
+		break;
+	default:
+		break;
+	}
+	return CS_ERR_OK;
+}
+
+#endif

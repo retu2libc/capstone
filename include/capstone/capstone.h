@@ -91,6 +91,7 @@ typedef enum cs_arch {
 	CS_ARCH_XCORE,		///< XCore architecture
 	CS_ARCH_M68K,		///< 68K architecture
 	CS_ARCH_TMS320C64X,	///< TMS320C64x architecture
+	CS_ARCH_TMS320C67X,	///< TMS320C67x architecture
 	CS_ARCH_M680X,		///< 680X architecture
 	CS_ARCH_EVM,		///< Ethereum architecture
 	CS_ARCH_MOS65XX,	///< MOS65XX architecture (including MOS6502)
@@ -391,6 +392,7 @@ typedef struct cs_opt_skipdata {
 #include "x86.h"
 #include "xcore.h"
 #include "tms320c64x.h"
+#include "tms320c67x.h"
 #include "m680x.h"
 #include "evm.h"
 #include "riscv.h"
@@ -449,6 +451,7 @@ typedef struct cs_detail {
 		cs_sparc sparc; ///< Sparc architecture
 		cs_xcore xcore; ///< XCore architecture
 		cs_tms320c64x tms320c64x;  ///< TMS320C64x architecture
+		cs_tms320c67x tms320c67x;  ///< TMS320C67x architecture
 		cs_m680x m680x; ///< M680X architecture
 		cs_evm evm;	    ///< Ethereum architecture
 		cs_mos65xx mos65xx;	///< MOS65XX architecture (including MOS6502)
@@ -600,6 +603,8 @@ CAPSTONE_EXPORT
 void CAPSTONE_API cs_arch_register_m68k(void);
 CAPSTONE_EXPORT
 void CAPSTONE_API cs_arch_register_tms320c64x(void);
+CAPSTONE_EXPORT
+void CAPSTONE_API cs_arch_register_tms320c67x(void);
 CAPSTONE_EXPORT
 void CAPSTONE_API cs_arch_register_m680x(void);
 CAPSTONE_EXPORT

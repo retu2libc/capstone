@@ -61,6 +61,7 @@
 #include "arch/Sparc/SparcModule.h"
 #include "arch/SystemZ/SystemZModule.h"
 #include "arch/TMS320C64x/TMS320C64xModule.h"
+#include "arch/TMS320C67x/TMS320C67xModule.h"
 #include "arch/X86/X86Module.h"
 #include "arch/XCore/XCoreModule.h"
 #include "arch/RISCV/RISCVModule.h"
@@ -188,6 +189,12 @@ typedef struct cs_arch_config {
 	{ \
 		TMS320C64x_global_init, \
 		TMS320C64x_option, \
+		~(CS_MODE_LITTLE_ENDIAN | CS_MODE_BIG_ENDIAN), \
+	}
+#define CS_ARCH_CONFIG_TMS320C67X \
+	{ \
+		TMS320C67x_global_init, \
+		TMS320C67x_option, \
 		~(CS_MODE_LITTLE_ENDIAN | CS_MODE_BIG_ENDIAN), \
 	}
 #define CS_ARCH_CONFIG_M680X \
@@ -329,6 +336,11 @@ static const cs_arch_config arch_configs[MAX_ARCH] = {
 #else
 	{ NULL, NULL, 0 },
 #endif
+#ifdef CAPSTONE_HAS_TMS320C67X
+	CS_ARCH_CONFIG_TMS320C67X,
+#else
+	{ NULL, NULL, 0 },
+#endif
 #ifdef CAPSTONE_HAS_M680X
 	CS_ARCH_CONFIG_M680X,
 #else
@@ -432,6 +444,9 @@ static const uint32_t all_arch = 0
 #endif
 #ifdef CAPSTONE_HAS_TMS320C64X
 				 | (1 << CS_ARCH_TMS320C64X)
+#endif
+#ifdef CAPSTONE_HAS_TMS320C67X
+				 | (1 << CS_ARCH_TMS320C67X)
 #endif
 #ifdef CAPSTONE_HAS_M680X
 				 | (1 << CS_ARCH_M680X)
@@ -620,6 +635,14 @@ void CAPSTONE_API cs_arch_register_tms320c64x(void)
 }
 
 CAPSTONE_EXPORT
+void CAPSTONE_API cs_arch_register_tms320c67x(void)
+{
+#if defined(CAPSTONE_USE_ARCH_REGISTRATION) && defined(CAPSTONE_HAS_TMS320C67X)
+	CS_ARCH_REGISTER(TMS320C64X);
+#endif
+}
+
+CAPSTONE_EXPORT
 void CAPSTONE_API cs_arch_register_m680x(void)
 {
 #if defined(CAPSTONE_USE_ARCH_REGISTRATION) && defined(CAPSTONE_HAS_M680X)
@@ -724,7 +747,7 @@ bool CAPSTONE_API cs_support(int query)
 			(1 << CS_ARCH_SH) | (1 << CS_ARCH_TRICORE) |
 			(1 << CS_ARCH_ALPHA) | (1 << CS_ARCH_HPPA) |
 			(1 << CS_ARCH_LOONGARCH) | (1 << CS_ARCH_XTENSA) | 
-			(1 << CS_ARCH_ARC));
+			(1 << CS_ARCH_ARC) | (1 << CS_ARCH_TMS320C67X));
 
 	if ((unsigned int)query < CS_ARCH_MAX)
 		return all_arch & (1 << query);
@@ -1000,6 +1023,9 @@ static uint8_t skipdata_size(cs_struct *handle)
 			return 2;
 		case CS_ARCH_TMS320C64X:
 			// TMS320C64x alignment is 4.
+			return 4;
+		case CS_ARCH_TMS320C67X:
+			// TMS320C67x alignment is 4.
 			return 4;
 		case CS_ARCH_M680X:
 			// M680X alignment is 1.
@@ -1749,6 +1775,11 @@ int CAPSTONE_API cs_op_count(csh ud, const cs_insn *insn, unsigned int op_type)
 				if (insn->detail->tms320c64x.operands[i].type == (tms320c64x_op_type)op_type)
 					count++;
 			break;
+		case CS_ARCH_TMS320C67X:
+			for (i = 0; i < insn->detail->tms320c67x.op_count; i++)
+				if (insn->detail->tms320c67x.operands[i].type == (tms320c67x_op_type)op_type)
+					count++;
+			break;
 		case CS_ARCH_M680X:
 			for (i = 0; i < insn->detail->m680x.op_count; i++)
 				if (insn->detail->m680x.operands[i].type == (m680x_op_type)op_type)
@@ -1921,6 +1952,14 @@ int CAPSTONE_API cs_op_index(csh ud, const cs_insn *insn, unsigned int op_type,
 		case CS_ARCH_TMS320C64X:
 			for (i = 0; i < insn->detail->tms320c64x.op_count; i++) {
 				if (insn->detail->tms320c64x.operands[i].type == (tms320c64x_op_type)op_type)
+					count++;
+				if (count == post)
+					return i;
+			}
+			break;
+		case CS_ARCH_TMS320C67X:
+			for (i = 0; i < insn->detail->tms320c67x.op_count; i++) {
+				if (insn->detail->tms320c67x.operands[i].type == (tms320c67x_op_type)op_type)
 					count++;
 				if (count == post)
 					return i;

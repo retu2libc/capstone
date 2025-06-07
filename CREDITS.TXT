@@ -76,6 +76,7 @@ Xipiter LLC: Capstone logo redesigned.
 Satoshi Tanda: Support Windows kernel driver.
 Koutheir Attouchi: Support for Windows CE.
 Fotis Loukos: TMS320C64x architecture.
+Christopher Wrogg: TMS320C67x architecture.
 Wolfgang Schwotzer: M680X architecture.
 Philippe Antoine: Integration with oss-fuzz and various fixes.
 Stephen Eckels (stevemk14ebr): x86 encoding features

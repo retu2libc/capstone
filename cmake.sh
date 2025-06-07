@@ -42,6 +42,9 @@ case $1 in
   TMS320C64x)
     ARCH=TMS320C64X
     ;;
+  TMS320C67x)
+    ARCH=TMS320C67X
+    ;;
   M680x)
     ARCH=M680X
     ;;
