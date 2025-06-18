@@ -1,5 +1,5 @@
 /* Capstone Disassembly Engine */
-/* TMS320C67x Backend by retu2libc <cwrogg@umich.edu> 2025 */
+/* TMS320C67x Backend by Christopher Wrogg <cwrogg@umich.edu> 2025 */
 
 #ifdef CAPSTONE_HAS_TMS320C67X
 

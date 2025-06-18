@@ -1,5 +1,5 @@
 /* Capstone Disassembly Engine */
-/* By retu2libc <cwrogg@umich.edu>, 2025 */
+/* By Christopher Wrogg <cwrogg@umich.edu>, 2025 */
 
 #ifndef CS_TMS320C67X_MODULE_H
 #define CS_TMS320C67X_MODULE_H
