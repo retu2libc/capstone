@@ -140,6 +140,18 @@ static const insn_map insns[] = {
 #endif
 	},
 	{
+		TMS320C67x_ABSDP_s1_rr, TMS320C67X_INS_ABSDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_ABSSP_s1_rr, TMS320C67X_INS_ABSSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
 		TMS320C67x_ADD2_d2_rrr, TMS320C67X_INS_ADD2,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_D, 0 }, 0, 0
