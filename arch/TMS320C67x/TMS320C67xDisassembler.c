@@ -102,12 +102,12 @@ static const unsigned GPRegsDecoderTable[] = {
 static const unsigned ControlRegsDecoderTable[] = {
 	TMS320C67x_AMR,    TMS320C67x_CSR,  TMS320C67x_ISR,   TMS320C67x_ICR,
 	TMS320C67x_IER,    TMS320C67x_ISTP, TMS320C67x_IRP,   TMS320C67x_NRP,
-	~0U,               ~0U,             TMS320C67x_TSCL,  TMS320C67x_TSCH,
-	~0U,               TMS320C67x_ILC,  TMS320C67x_RILC,  TMS320C67x_REP,
-	TMS320C67x_PCE1,   TMS320C67x_DNUM, ~0U,              ~0U,
-	~0U,               TMS320C67x_SSR,  TMS320C67x_GPLYA, TMS320C67x_GPLYB,
-	TMS320C67x_GFPGFR, TMS320C67x_DIER, TMS320C67x_TSR,   TMS320C67x_ITSR,
-	TMS320C67x_NTSR,   TMS320C67x_ECR,  ~0U,              TMS320C67x_IERR
+	~0U,               ~0U,             ~0U,  			  ~0U,
+	~0U,               ~0U,  			~0U,  			  ~0U,
+	TMS320C67x_PCE1,   ~0U, 			TMS320C67x_FADCR, TMS320C67x_FAUCR,
+	TMS320C67x_FMCR,   ~0U, 			~0U, 			  ~0U,
+	~0U, 			   ~0U, 			~0U, 			  ~0U,
+	~0U, 			   ~0U, 			~0U, 			  ~0U,
 };
 
 static uint64_t getFeatureBits(int mode)
@@ -601,7 +601,6 @@ bool TMS320C67x_getInstruction(csh ud, const uint8_t *code, size_t code_len,
 		memset(MI->flat_insn->detail, 0, offsetof(cs_detail, tms320c67x)+sizeof(cs_tms320c67x));
 
 	insn = readBytes32(MI, code);
-	printf("TMS320C67x: 0x%08x at 0x%08" PRIx64 "\n", insn, address);
 	result = decodeInstruction_4(DecoderTable32, MI, insn, address, info, 0);
 
 	if(result == MCDisassembler_Success) {

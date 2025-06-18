@@ -129,9 +129,6 @@ static void printOperand(MCInst *MI, unsigned OpNo, SStream *O)
 		reg = MCOperand_getReg(Op);
 		if ((MCInst_getOpcode(MI) == TMS320C67x_MVC_s1_rr) && (OpNo == 1)) {
 			switch(reg) {
-				case TMS320C67X_REG_EFR:
-					SStream_concat0(O, "EFR");
-					break;
 				case TMS320C67X_REG_IFR:
 					SStream_concat0(O, "IFR");
 					break;
