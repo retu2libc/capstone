@@ -224,6 +224,30 @@ static const insn_map insns[] = {
 #endif
 	},
 	{
+		TMS320C67x_ADDDP_l1_rrr, TMS320C67X_INS_ADDDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_ADDDP_s2_rrr, TMS320C67X_INS_ADDDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_ADDSP_l1_rrr, TMS320C67X_INS_ADDSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_ADDSP_s2_rrr, TMS320C67X_INS_ADDSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
 		TMS320C67x_ADDK_s2_ir, TMS320C67X_INS_ADDK,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
@@ -404,6 +428,18 @@ static const insn_map insns[] = {
 #endif
 	},
 	{
+		TMS320C67x_CMPEQDP_s1_rrr, TMS320C67X_INS_CMPEQDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_CMPEQSP_s1_rrr, TMS320C67X_INS_CMPEQSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
 		TMS320C67x_CMPGT_l1_ipr, TMS320C67X_INS_CMPGT,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
@@ -425,6 +461,18 @@ static const insn_map insns[] = {
 		TMS320C67x_CMPGT_l1_rrr_x2, TMS320C67X_INS_CMPGT,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_CMPGTDP_s1_rrr, TMS320C67X_INS_CMPGTDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_CMPGTSP_s1_rrr, TMS320C67X_INS_CMPGTSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
 #endif
 	},
 	{
@@ -452,6 +500,18 @@ static const insn_map insns[] = {
 #endif
 	},
 	{
+		TMS320C67x_CMPLTDP_s1_rrr, TMS320C67X_INS_CMPLTDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_CMPLTSP_s1_rrr, TMS320C67X_INS_CMPLTSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
 		TMS320C67x_CMPLT_l1_ipr, TMS320C67X_INS_CMPLT,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
@@ -471,6 +531,24 @@ static const insn_map insns[] = {
 	},
 	{
 		TMS320C67x_CMPLT_l1_rrr_x2, TMS320C67X_INS_CMPLT,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_DPINT_l1_rr, TMS320C67X_INS_DPINT,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_DPSP_l1_rr, TMS320C67X_INS_DPSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_DPTRUNC_l1_rr, TMS320C67X_INS_DPTRUNC,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
 #endif
@@ -497,6 +575,30 @@ static const insn_map insns[] = {
 		TMS320C67x_EXT_s1_rrr, TMS320C67X_INS_EXT,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_INTDP_l1_rr, TMS320C67X_INS_INTDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_INTDPU_l1_rr, TMS320C67X_INS_INTDPU,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_INTSP_l1_rr, TMS320C67X_INS_INTSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_INTSPU_l1_rr, TMS320C67X_INS_INTSPU,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
 #endif
 	},
 	{
@@ -575,6 +677,54 @@ static const insn_map insns[] = {
 		TMS320C67x_LMBD_l1_rrr_x2, TMS320C67X_INS_LMBD,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_MPYDP_m4_rrr, TMS320C67X_INS_MPYDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_M, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_MPYI_m4_rrr, TMS320C67X_INS_MPYI,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_M, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_MPYI_m4_irr, TMS320C67X_INS_MPYI,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_M, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_MPYID_m4_rrr, TMS320C67X_INS_MPYID,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_M, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_MPYID_m4_irr, TMS320C67X_INS_MPYID,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_M, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_MPYSP_m4_rrr, TMS320C67X_INS_MPYSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_M, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_MPYSPDP_m4_rrr, TMS320C67X_INS_MPYSPDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_M, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_MPYSP2DP_m4_rrr, TMS320C67X_INS_MPYSP2DP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_M, 0 }, 0, 0
 #endif
 	},
 	{
@@ -776,6 +926,18 @@ static const insn_map insns[] = {
 #endif
 	},
 	{
+		TMS320C67x_RCPDP_s1_rr, TMS320C67X_INS_RCPDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_RCPSP_s1_rr, TMS320C67X_INS_RCPSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
 		TMS320C67x_SADD_l1_ipp, TMS320C67X_INS_SADD,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
@@ -932,6 +1094,24 @@ static const insn_map insns[] = {
 #endif
 	},
 	{
+		TMS320C67x_SPDP_s1_rr, TMS320C67X_INS_SPDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_SPINT_l1_rr, TMS320C67X_INS_SPINT,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_SPTRUNC_l1_rr, TMS320C67X_INS_SPTRUNC,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
 		TMS320C67x_SSHL_s1_rir, TMS320C67X_INS_SSHL,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
@@ -1061,6 +1241,30 @@ static const insn_map insns[] = {
 		TMS320C67x_SUBC_l1_rrr_x2, TMS320C67X_INS_SUBC,
 #ifndef CAPSTONE_DIET
 		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_SUBDP_l1_rrr, TMS320C67X_INS_SUBDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_SUBDP_s1_rrr, TMS320C67X_INS_SUBDP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_SUBSP_l1_rr, TMS320C67X_INS_SUBSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_L, 0 }, 0, 0
+#endif
+	},
+	{
+		TMS320C67x_SUBSP_s1_rr, TMS320C67X_INS_SUBSP,
+#ifndef CAPSTONE_DIET
+		{ 0 }, { 0 }, { TMS320C67X_GRP_FUNIT_S, 0 }, 0, 0
 #endif
 	},
 	{
@@ -1248,7 +1452,7 @@ static const name_map insn_name_maps[] = {
     {TMS320C67X_INS_CMPLTU, "cmpltu"},
     {TMS320C67X_INS_DPINT, "dpint"},
     {TMS320C67X_INS_DPSP, "dpsp"},
-    {TMS320C67X_INS_DTRUNC, "dtrunc"},
+    {TMS320C67X_INS_DPTRUNC, "dptrunc"},
     {TMS320C67X_INS_EXT, "ext"},
     {TMS320C67X_INS_EXTU, "extu"},
     {TMS320C67X_INS_INTDP, "intdp"},
